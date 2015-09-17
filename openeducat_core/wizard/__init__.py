@@ -19,9 +19,7 @@
 #
 ##############################################################################
 
-from . import models
-from . import report
-from . import wizard
+from . import students_create_user_wizard
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
