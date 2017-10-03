@@ -23,7 +23,7 @@
     <field name="arch" type="xml">
       <form string="Batch">
         <header>
-          <field name="state" widget="statusbar" statusbar_visible="active,pending,finished,cancel" clickable="True"/>
+          <field name="state" widget="statusbar" statusbar_visible="pending,active,finished,cancel"/>
         </header>
         <sheet>
           <div class="oe_button_box" name="button_box">

@@ -20,12 +20,12 @@ class EducationBatch(models.Model):
         comodel_name='education.faculty',
         string='Teacher in charge')
     state = fields.Selection([
-        ('active', 'Active'),
         ('pending', 'Pending'),
+        ('active', 'Active'),
         ('finished', 'Finished'),
         ('cancel', 'Cancelled'),
     ], string='Status', readonly=True, index=True, track_visibility='onchange',
-        default='active')
+        default='pending')
 
     active = fields.Boolean(
         string='Active', default=True)
@@ -54,3 +54,7 @@ class EducationBatch(models.Model):
             return batches.name_get()
         return super(EducationBatch, self).name_search(
             name, args, operator=operator, limit=limit)
+
+    @api.multi
+    def set_active(self):
+        self.state = 'active'

@@ -11,7 +11,6 @@ class EducationSubjectRegistration(models.Model):
     _inherit = ['mail.thread']
     _rec_name = 'course_id'
 
-
     name = fields.Char('Name', readonly=True, default='New')
     student_id = fields.Many2one('education.student', 'Student', required=True,
                                  track_visibility='onchange')
@@ -29,7 +28,6 @@ class EducationSubjectRegistration(models.Model):
     state = fields.Selection(
         [('pending', 'Pending'),
          ('active', 'Active'),
-         ('re-enrol', 'Re-enrol'),
          ('cancelled', 'Cancelled'),
          ('drop', 'Drop'),
          ('finished', 'Finished')],
