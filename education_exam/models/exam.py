@@ -30,6 +30,23 @@ class OpExam(models.Model):
     total_marks = fields.Integer('Total Marks', required=True)
     min_marks = fields.Integer('Passing Marks', required=True)
 
+    course_id = fields.Many2one(
+        comodel_name='education.course',
+        string='Course',
+        related="session_id.course_id",
+        store=True)
+
+    batch_id = fields.Many2one(
+        comodel_name='education.batch',
+        string='Batch',
+        related="session_id.batch_id",
+        store=True)
+
+    date = fields.Date(
+        string='Date')
+
+
+
     @api.constrains('total_marks', 'min_marks')
     def _check_marks(self):
         if self.total_marks <= 0.0 or self.min_marks <= 0.0:

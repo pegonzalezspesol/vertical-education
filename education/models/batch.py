@@ -30,6 +30,13 @@ class EducationBatch(models.Model):
     active = fields.Boolean(
         string='Active', default=True)
 
+    subject_registration_ids = fields.One2many(
+        comodel_name='education.subject.registration',
+        inverse_name='batch_id',
+        string='Subject Registration')
+
+
+
     @api.multi
     @api.constrains('start_date', 'end_date')
     def check_dates(self):

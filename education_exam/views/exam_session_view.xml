@@ -68,6 +68,10 @@
                     <field name="course_id" select="True" />
                     <field name="batch_id" select="True" />
                     <field name="venue"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                        <filter string="Batch" domain="[]" context="{'group_by':'batch_id'}" />
+                    </group>
                 </search>
             </field>
         </record>

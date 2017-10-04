@@ -915,7 +915,7 @@ msgstr "Alumnos"
 #: model:ir.ui.view,arch_db:education_exam.report_ticket
 #: model:ir.ui.view,arch_db:education_exam.view_education_exam_search
 msgid "Subject"
-msgstr "Asunto"
+msgstr "Asignatura"
 
 #. module: education_exam
 #: model:ir.ui.view,arch_db:education_exam.report_ticket
