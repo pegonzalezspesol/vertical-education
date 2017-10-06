@@ -35,6 +35,12 @@ class EducationBatch(models.Model):
         inverse_name='batch_id',
         string='Subject Registration')
 
+    education_student_course_ids = fields.One2many(
+        comodel_name='education.student.course',
+        inverse_name='batch_id',
+        string='Education Student Course')
+
+
 
 
     @api.multi

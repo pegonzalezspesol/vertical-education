@@ -82,7 +82,7 @@
     'images': [
         'static/description/education_library_banner.jpg',
     ],
-    'installable': False,
+    'installable': True,
     'auto_install': False,
     'application': True,
 }

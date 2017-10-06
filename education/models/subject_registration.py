@@ -32,7 +32,8 @@ class EducationSubjectRegistration(models.Model):
          ('drop', 'Drop'),
          ('finished', 'Finished')],
         string='Status',
-        default='pending')
+        default='pending',
+        opy=False, track_visibility='onchange')
     # state = fields.Selection([
     #     ('draft', 'Draft'), ('submitted', 'Submitted'),
     #     ('approved', 'Approved'), ('rejected', 'Rejected')],

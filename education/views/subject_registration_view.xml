@@ -31,9 +31,9 @@
         <sheet>
           <h1><field name="name"/></h1>
           <group colspan="4" col="4">
-            <field name="student_id"/>
-            <field name="course_id" />
-            <field name="batch_id" domain="[('course_id', '=', course_id)]"/>
+            <field name="student_id" attrs="{'readonly': [('state', 'in', ['finished','drop'])]}"/>
+            <field name="course_id" attrs="{'readonly': [('state', 'in', ['finished','drop'])]}"/>
+            <field name="batch_id" attrs="{'readonly': [('state', 'in', ['finished','drop'])]}" domain="[('course_id', '=', course_id)]" />
             <field name="min_unit_load"/>
             <field name="max_unit_load"/>
           </group>
@@ -90,7 +90,7 @@
   <record id="seq_education_subject_registration" model="ir.sequence">
     <field name="name">Subject Registration</field>
     <field name="code">education.subject.registration</field>
-    <field name="prefix">SR</field>
+    <field name="prefix">MT</field>
     <field name="padding">4</field>
     <field name="company_id" eval="False"/>
   </record>

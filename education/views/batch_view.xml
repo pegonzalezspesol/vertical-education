@@ -57,7 +57,7 @@
         <field name="course_id"/>
         <field name="state"/>
         <field name="active"/>
-        <field name="subject_registration_ids" />
+        <field name="subject_registration_ids"/>
         <filter string="Archived" domain="[('active', '=', False)]"/>
         <newline/>
         <group expand="0" string="Group By...">

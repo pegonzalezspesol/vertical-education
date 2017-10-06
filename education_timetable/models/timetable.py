@@ -55,7 +55,7 @@ class Session(models.Model):
     @api.depends('faculty_id', 'subject_id', 'start_datetime')
     def _compute_name(self):
         for session in self:
-            session.name = session. faculty_id.name + ':' + \
+            session.name = session.faculty_id.name + ':' + \
                 session.subject_id.name + ':' + str(session.start_datetime)
 
     # For record rule on student and faculty dashboard
