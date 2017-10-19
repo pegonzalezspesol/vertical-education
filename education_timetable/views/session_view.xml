@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="view_education_session_form" model="ir.ui.view">
+      <field name="name">view.education.session.form</field>
+      <field name="model">education.session</field>
+      <field name="arch" type="xml">
+        <form string="Education Session">
+          <sheet>
+            <group name="main">
+              <field name="name" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_education_session_tree" model="ir.ui.view">
+      <field name="name">view.education.session.tree</field>
+      <field name="model">education.session</field>
+      <field name="arch" type="xml">
+        <tree string="Education Session">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_education_session_search" model="ir.ui.view">
+      <field name="name">view.education.session.search</field>
+      <field name="model">education.session</field>
+      <field name="arch" type="xml">
+        <search string="Education Session">
+          <field name="name" />
+          <group string="Group By" name="groupby">
+            <filter name="name_groupby" string="name"
+              context="{'group_by': 'name'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record id="education_session_action" model="ir.actions.act_window">
+      <field name="name">Education Session</field>
+      <field name="res_model">education.session</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to create a new Education Session.
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="education_session_menu" parent="education.education_assistance_root"
+      action="education_session_action" sequence="20"/>
+
+  </data>
+</openerp>

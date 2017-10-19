@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="view_education_timetable_form" model="ir.ui.view">
+      <field name="name">view.education.timetable.form</field>
+      <field name="model">education.timetable</field>
+      <field name="arch" type="xml">
+        <form string="Education Timetable">
+          <sheet>
+            <group name="main">
+              <field name="name"/>
+            </group>
+            <group string="Timetable Lines">
+              <field name="timetable_line_ids" nolabel="1">
+                <tree editable="bottom">
+                  <field name="course_id"/>
+                  <field name="group_id" domain="[('course_id', '=', course_id)]"/>
+                  <field name="teacher_id"/>
+                  <field name="days"/>
+                  <field name="timerange_id"/>
+                </tree>
+              </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_education_timetable_tree" model="ir.ui.view">
+      <field name="name">view.education.timetable.tree</field>
+      <field name="model">education.timetable</field>
+      <field name="arch" type="xml">
+        <tree string="Education Timetable">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_education_timetable_search" model="ir.ui.view">
+      <field name="name">view.education.timetable.search</field>
+      <field name="model">education.timetable</field>
+      <field name="arch" type="xml">
+        <search string="Education Timetable">
+          <field name="name"/>
+          <group string="Group By" name="groupby">
+            <filter name="name_groupby" string="name" context="{'group_by': 'name'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record id="education_timetable_action" model="ir.actions.act_window">
+      <field name="name">Education Timetable</field>
+      <field name="res_model">education.timetable</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to create a new Education Timetable.
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="education_timetable_menu" parent="education.education_assistance_root" action="education_timetable_action" sequence="20"/>
+
+  </data>
+</openerp>
