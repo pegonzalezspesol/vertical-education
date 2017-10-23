@@ -17,9 +17,10 @@
         'education',
     ],
     'data': [
-        'views/timetable_view.xml',
+        'views/timetable_line_view.xml',
         'views/session_view.xml',
-        'views/timerange_view.xml'
+        'views/timerange_view.xml',
+        'wizard/session_presence_view.xml'
     ],
     'installable': True,
 }

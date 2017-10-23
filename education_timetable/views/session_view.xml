@@ -6,9 +6,24 @@
       <field name="model">education.session</field>
       <field name="arch" type="xml">
         <form string="Education Session">
+          <header>
+            <field name="state" widget="statusbar"/>
+          </header>
           <sheet>
             <group name="main">
-              <field name="name" />
+              <field name="timetable_id"/>
+            </group>
+            <group name="data">
+              <field name="date"/>
+            </group>
+            <group string="Session Ausences">
+              <field name="ausence_ids" nolabel="1">
+                <tree>
+                  <field name="student_id" />
+                  <field name="notes" />
+                  <field name="supporting_document" />
+                </tree>
+              </field>
             </group>
           </sheet>
         </form>
@@ -20,7 +35,9 @@
       <field name="model">education.session</field>
       <field name="arch" type="xml">
         <tree string="Education Session">
-          <field name="name" />
+          <field name="timetable_id"/>
+          <field name="date"/>
+          <field name="state"/>
         </tree>
       </field>
     </record>
@@ -30,10 +47,12 @@
       <field name="model">education.session</field>
       <field name="arch" type="xml">
         <search string="Education Session">
-          <field name="name" />
+          <field name="date"/>
+          <field name="timetable_id"/>
           <group string="Group By" name="groupby">
-            <filter name="name_groupby" string="name"
-              context="{'group_by': 'name'}" />
+            <filter string="State" context="{'group_by': 'state'}"/>
+            <filter string="Timetable" context="{'group_by': 'timetable_id'}"/>
+            <filter string="Date" context="{'group_by': 'date'}"/>
           </group>
         </search>
       </field>
@@ -50,8 +69,14 @@
       </field>
     </record>
 
-    <menuitem id="education_session_menu" parent="education.education_assistance_root"
-      action="education_session_action" sequence="20"/>
+    <record id="session_sequence" model="ir.sequence">
+      <field name="name">Edcation Session Sequence</field>
+      <field name="code">education.session</field>
+      <field name="prefix">SES</field>
+      <field name="padding">3</field>
+    </record>
+
+    <menuitem id="education_session_menu" parent="education.education_assistance_root" action="education_session_action" sequence="20"/>
 
   </data>
 </openerp>

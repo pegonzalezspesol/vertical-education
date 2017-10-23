@@ -6,8 +6,35 @@
 
 from openerp import models, api, fields, _
 
+
 class EducationSession(models.Model):
     _name = 'education.session'
 
-    name = fields.Char(
-        string='Name')
+    code = fields.Char(
+        string='Code')
+
+
+    timetable_id = fields.Many2one(
+        comodel_name='education.timetable.line',
+        string='Timetable Lines')
+
+    date = fields.Date(
+        string='Date')
+
+    state = fields.Selection(
+        [('draft', 'Draft'),
+         ('done', 'Done')],
+        string='Status',
+        default='draft')
+
+    ausence_ids = fields.One2many(
+        comodel_name='education.session.ausence',
+        inverse_name='session_id',
+        string='Ausences')
+
+    @api.model
+    def create(self, vals):
+        if vals.get('code', 'New') == 'New':
+            vals['code'] = self.env['ir.sequence'].next_by_code(
+                'education.session') or 'New'
+        return super(EducationTimetableLine, self).create(vals)
