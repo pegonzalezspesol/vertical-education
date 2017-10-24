@@ -38,4 +38,12 @@ class EducationExam(models.Model):
     def _compute_name(self):
         for record in self:
             record.name = record.group_id.code + \
-                '/' + record.subject_id + '/' + record.date
+                '/' + record.subject_id.name + '/' + record.date
+
+    @api.multi
+    def set_planned(self):
+        self.state = 'planned'
+
+    @api.multi
+    def set_done(self):
+        self.state = 'done'

@@ -138,7 +138,7 @@ msgstr "Planificado"
 #: model:ir.model.fields,field_description:education_evaluation.field_education_student_result_ids
 #: model:ir.ui.view,arch_db:education_evaluation.view_education_student_form_evaluation_inherit
 msgid "Results"
-msgstr "Resultados"
+msgstr "Exámenes"
 
 #. module: education_evaluation
 #: model:ir.model.fields,field_description:education_evaluation.field_education_result_score
