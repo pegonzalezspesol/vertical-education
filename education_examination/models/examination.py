@@ -8,7 +8,7 @@ class EducationExamination(models.Model):
     _name = 'education.examination'
 
     name = fields.Char(
-        string='Name')
+        string='Name', required=True)
 
     state = fields.Selection(
         [('draft', 'Draft'),

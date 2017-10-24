@@ -21,7 +21,7 @@
       <field name="arch" type="xml">
         <tree string="Education Result">
           <field name="examination_id"/>
-          <field name="subject_id"/>
+          <field name="student_id"/>
           <field name="mark"/>
         </tree>
       </field>
@@ -33,11 +33,11 @@
       <field name="arch" type="xml">
         <search string="Education Result">
           <field name="examination_id"/>
-          <field name="subject_id"/>
+          <field name="student_id"/>
           <field name="mark"/>
           <group string="Group By" name="groupby">
             <filter string="Examination" context="{'group_by': 'examination_id'}"/>
-            <filter string="Subject" context="{'group_by': 'subject_id'}"/>
+            <filter string="Student" context="{'group_by': 'student_id'}"/>
             <filter string="Mark" context="{'group_by': 'mark'}"/>
           </group>
         </search>

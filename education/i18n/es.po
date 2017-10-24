@@ -478,7 +478,7 @@ msgstr "Matrículas"
 #. module: education
 #: model:ir.ui.menu,name:education.education_exam_root
 msgid "Exams"
-msgstr "Examenes"
+msgstr "Exámenes"
 
 #. module: education
 #: model:ir.ui.view,arch_db:education.view_education_student_kanban

@@ -7,12 +7,12 @@
       <field name="arch" type="xml">
         <form string="Education Examination">
           <header>
-            <field name="state" widget="statusbar" statusbar_visible="states"/>
+            <field name="state" widget="statusbar"/>
           </header>
           <sheet>
             <group name="main">
               <h1>
-                <field name="name" class="oe_highlight"/>
+                <field name="name" placeholder="Name"/>
               </h1>
             </group>
             <group name="information" col="4">
@@ -21,7 +21,13 @@
               <field name="date"/>
             </group>
             <group name="results">
-              <field name="result_ids"/>
+              <field name="result_ids" nolabel="1">
+                <tree editable="bottom">
+                  <field name="examination_id"/>
+                  <field name="student_id"/>
+                  <field name="mark"/>
+                </tree>
+              </field>
             </group>
           </sheet>
         </form>

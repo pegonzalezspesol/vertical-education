@@ -13,6 +13,7 @@
     "installable": True,
     "depends": [
         "education",
+        'education_timetable'
     ],
     "data": [
         'views/examination_view.xml',

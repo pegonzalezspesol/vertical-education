@@ -13,7 +13,6 @@ class EducationSession(models.Model):
     code = fields.Char(
         string='Code')
 
-
     timetable_id = fields.Many2one(
         comodel_name='education.timetable.line',
         string='Timetable Lines')
