@@ -4,8 +4,13 @@
 #                Luis Adan Jimenez Hernandez <luis.jimenez@pesol.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
-from . import timetable_line
-from . import session_ausence
-from . import timerange
-from . import session
-from . import student
+from openerp import models, api, fields, _
+
+
+class EducationStudent(models.Model):
+    _inherit = 'education.student'
+
+    result_ids = fields.One2many(
+        comodel_name='education.result',
+        inverse_name='student_id',
+        string='Results')

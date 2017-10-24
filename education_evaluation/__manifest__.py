@@ -2,7 +2,7 @@
 # Copyright <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Education Examination",
+    "name": "Education Evaluation",
     "summary": "Education Exam for Odoo",
     "version": "11.0.1.0.0",
     "category": "Education",
@@ -13,11 +13,11 @@
     "installable": True,
     "depends": [
         "education",
-        'education_timetable'
     ],
     "data": [
-        'views/examination_view.xml',
+        'views/exam_view.xml',
         'views/result_view.xml',
+        'views/student_view.xml'
     ],
     "demo": [
     ],

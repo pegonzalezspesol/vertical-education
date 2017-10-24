@@ -4,11 +4,12 @@
 from openerp import models, api, fields, _
 
 
-class EducationExamination(models.Model):
-    _name = 'education.examination'
+class EducationExam(models.Model):
+    _name = 'education.exam'
 
     name = fields.Char(
-        string='Name', required=True)
+        string='Name',
+        compute='_compute_name', readonly=True)
 
     state = fields.Selection(
         [('draft', 'Draft'),
@@ -27,8 +28,14 @@ class EducationExamination(models.Model):
 
     result_ids = fields.One2many(
         comodel_name='education.result',
-        inverse_name='examination_id',
+        inverse_name='exam_id',
         string='Results')
 
     date = fields.Date(
         string='Date')
+
+    @api.multi
+    def _compute_name(self):
+        for record in self:
+            record.name = record.group_id.code + \
+                '/' + record.subject_id + '/' + record.date

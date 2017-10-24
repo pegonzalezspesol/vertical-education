@@ -7,12 +7,12 @@ from openerp import models, api, fields, _
 class EducationResult(models.Model):
     _name = 'education.result'
 
-    examination_id = fields.Many2one(
-        comodel_name='education.examination',
-        string='Examination')
+    exam_id = fields.Many2one(
+        comodel_name='education.exam',
+        string='Exam')
 
-    mark = fields.Float(
-        string='Mark')
+    score = fields.Float(
+        string='Score')
 
     student_id = fields.Many2one(
         comodel_name='education.student',
