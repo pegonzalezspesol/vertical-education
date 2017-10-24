@@ -44,7 +44,7 @@
       </field>
     </record>
 
-    <record id="education_result_action" model="ir.actions.act_window">
+    <!-- <record id="education_result_action" model="ir.actions.act_window">
       <field name="name">Education Result</field>
       <field name="res_model">education.result</field>
       <field name="view_mode">tree,form</field>
@@ -55,7 +55,7 @@
       </field>
     </record>
 
-    <menuitem id="education_result_menu" parent="education.education_exam_root" action="education_result_action" sequence="20"/>
+    <menuitem id="education_result_menu" parent="education.education_exam_root" action="education_result_action" sequence="20"/> -->
 
   </data>
 </openerp>
