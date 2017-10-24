@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class EducationGroup(models.Model):
@@ -51,3 +52,11 @@ class EducationGroup(models.Model):
             vals['code'] = self.env['ir.sequence'].next_by_code(
                 'education.group') or 'New'
         return super(EducationGroup, self).create(vals)
+
+    @api.multi
+    def unlink(self):
+        if self.record_ids:
+            raise ValidationError(
+                _('You can not delete a group with registered students'))
+        else:
+            super(EducationGroup, self).unlink()
