@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
   <data>
     <record id="view_education_exam_form" model="ir.ui.view">
       <field name="name">view.education.exam.form</field>
@@ -84,4 +84,4 @@
     <menuitem id="education_exam_menu" parent="education.education_exam_root" action="education_exam_action" sequence="20"/>
 
   </data>
-</openerp>
+</odoo>
