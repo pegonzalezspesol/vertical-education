@@ -14,6 +14,13 @@ class EducationSubject(models.Model):
 
     name = fields.Char(string='Name', required=True)
 
+    course_ids = fields.Many2many(
+        comodel_name='education.course',
+        relation='course_subject_rel',
+        column1='subject_id',
+        column2='course_id',
+        string='Courses')
+
 
 class EducationCourse(models.Model):
     _name = "education.course"
@@ -25,6 +32,9 @@ class EducationCourse(models.Model):
         string='Category')
     subject_ids = fields.Many2many(
         comodel_name='education.subject',
+        relation='course_subject_rel',
+        column1='course_id',
+        column2='subject_id',
         string='Subjects')
 
     active = fields.Boolean(

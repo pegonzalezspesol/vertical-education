@@ -80,10 +80,10 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: education_timetable
-#: model:ir.model.fields,field_description:education_timetable.field_education_timetable_line_days
+#: model:ir.model.fields,field_description:education_timetable.field_education_timetable_line_day
 #: model:ir.ui.view,arch_db:education_timetable.view_education_timetable_search
-msgid "Days"
-msgstr "Días"
+msgid "Day"
+msgstr "Día"
 
 #. module: education_timetable
 #: model:ir.model.fields,field_description:education_timetable.field_education_session_ausence_display_name
@@ -150,7 +150,7 @@ msgid "End time"
 msgstr "Hora fin"
 
 #. module: education_timetable
-#: selection:education.timetable.line,days:0
+#: selection:education.timetable.line,day:0
 msgid "Friday"
 msgstr "Viernes"
 
@@ -218,7 +218,7 @@ msgid "Last Updated on"
 msgstr "Última actualización el"
 
 #. module: education_timetable
-#: selection:education.timetable.line,days:0
+#: selection:education.timetable.line,day:0
 msgid "Monday"
 msgstr "Lunes"
 
@@ -331,7 +331,7 @@ msgid "Teacher"
 msgstr "Profesor"
 
 #. module: education_timetable
-#: selection:education.timetable.line,days:0
+#: selection:education.timetable.line,day:0
 msgid "Thursday"
 msgstr "Jueves"
 
@@ -352,12 +352,12 @@ msgid "Timetable Lines"
 msgstr "Lineas del horario"
 
 #. module: education_timetable
-#: selection:education.timetable.line,days:0
+#: selection:education.timetable.line,day:0
 msgid "Tuesday"
 msgstr "Martes"
 
 #. module: education_timetable
-#: selection:education.timetable.line,days:0
+#: selection:education.timetable.line,day:0
 msgid "Wednesday"
 msgstr "Miércoles"
 

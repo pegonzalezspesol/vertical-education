@@ -34,7 +34,7 @@ class EducationTimetableLine(models.Model):
         comodel_name='education.timerange',
         string='Time Range')
 
-    days = fields.Selection(
+    day = fields.Selection(
         [('0', 'Monday'),
          ('1', 'Tuesday'),
          ('2', 'Wednesday'),
@@ -42,10 +42,10 @@ class EducationTimetableLine(models.Model):
          ('4', 'Friday')],
         string='Days')
 
-    start_date = fields.Date(
+    start_date = fields.Datetime(
         string='Start Date')
 
-    end_date = fields.Date(
+    end_date = fields.Datetime(
         string='End Date')
 
     state = fields.Selection(
@@ -92,6 +92,6 @@ class EducationTimetableLine(models.Model):
 
     @api.onchange('group_id')
     def _onchange_group_id(self):
-        for record in self.group_id:
-            self.start_date = record.start_date
-            self.end_date = record.end_date
+        for record in self:
+            record.start_date = record.group_id.date_from
+            record.end_date = record.group_id.date_to

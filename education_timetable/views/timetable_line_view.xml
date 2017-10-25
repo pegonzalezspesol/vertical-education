@@ -16,8 +16,8 @@
               <field name="group_id" domain="[('course_id', '=', course_id)]"/>
               <field name="subject_id"/>
               <field name="teacher_id"/>
+              <field name="day"/>
               <field name="timerange_id"/>
-              <field name="days"/>
               <field name="start_date"/>
               <field name="end_date"/>
             </group>
@@ -39,7 +39,7 @@
           <field name="subject_id"/>
           <field name="teacher_id"/>
           <field name="timerange_id"/>
-          <field name="days"/>
+          <field name="day"/>
           <field name="start_date"/>
           <field name="end_date"/>
           <field name="state"/>
@@ -57,7 +57,7 @@
           <field name="subject_id"/>
           <field name="teacher_id"/>
           <field name="timerange_id"/>
-          <field name="days"/>
+          <field name="day"/>
           <field name="start_date"/>
           <field name="end_date"/>
           <group string="Group By" name="groupby">
@@ -65,7 +65,7 @@
             <filter string="Group" context="{'group_by': 'group_id'}"/>
             <filter string="Subject" context="{'group_by': 'subject_id'}"/>
             <filter string="teacher_id" context="{'group_by': 'teacher_id'}"/>
-            <filter string="Days" context="{'group_by': 'days'}"/>
+            <filter string="Days" context="{'group_by': 'day'}"/>
             <filter string="timetable_id" context="{'group_by': 'timerange_id'}"/>
           </group>
         </search>

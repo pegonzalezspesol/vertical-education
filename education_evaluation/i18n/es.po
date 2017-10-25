@@ -27,6 +27,16 @@ msgid "Created by"
 msgstr "Creado por"
 
 #. module: education_evaluation
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_exam_form
+msgid "Set Done"
+msgstr "Finalizar"
+
+#. module: education_evaluation
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_exam_form
+msgid "Set Planned"
+msgstr "Planificar"
+
+#. module: education_evaluation
 #: model:ir.model.fields,field_description:education_evaluation.field_education_exam_create_date
 #: model:ir.model.fields,field_description:education_evaluation.field_education_result_create_date
 msgid "Created on"

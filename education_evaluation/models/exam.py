@@ -43,6 +43,10 @@ class EducationExam(models.Model):
     @api.multi
     def set_planned(self):
         self.state = 'planned'
+        values = []
+        for record in self.group_id.record_ids:
+            values.append((0, 0, {'student_id': record.student_id.id}))
+        self.result_ids = values
 
     @api.multi
     def set_done(self):

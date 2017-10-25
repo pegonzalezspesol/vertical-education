@@ -14,7 +14,7 @@
           <sheet>
             <group name="main">
               <h1>
-                <field name="name" placeholder="Name"/>
+                <field name="name"/>
               </h1>
             </group>
             <group name="information" col="4">
@@ -25,7 +25,6 @@
             <group string="Results" attrs="{'invisible': [('state', '=', 'draft')]}">
               <field name="result_ids" nolabel="1">
                 <tree editable="bottom">
-                  <field name="exam_id"/>
                   <field name="student_id" />
                   <field name="score"/>
                 </tree>
