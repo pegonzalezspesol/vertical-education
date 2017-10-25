@@ -22,11 +22,11 @@
               <field name="subject_id"/>
               <field name="date"/>
             </group>
-            <group string="results" attrs="{'invisible': [('state', '=', 'draft')]}">
+            <group string="Results" attrs="{'invisible': [('state', '=', 'draft')]}">
               <field name="result_ids" nolabel="1">
                 <tree editable="bottom">
                   <field name="exam_id"/>
-                  <field name="student_id"/>
+                  <field name="student_id" />
                   <field name="score"/>
                 </tree>
               </field>

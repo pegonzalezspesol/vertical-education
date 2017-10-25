@@ -37,7 +37,7 @@ class EducationExam(models.Model):
     @api.multi
     def _compute_name(self):
         for record in self:
-            record.name = record.group_id.code + \
+            record.name = record.group_id.name + \
                 '/' + record.subject_id.name + '/' + record.date
 
     @api.multi

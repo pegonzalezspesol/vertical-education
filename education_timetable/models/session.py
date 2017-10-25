@@ -36,4 +36,4 @@ class EducationSession(models.Model):
         if vals.get('code', 'New') == 'New':
             vals['code'] = self.env['ir.sequence'].next_by_code(
                 'education.session') or 'New'
-        return super(EducationTimetableLine, self).create(vals)
+        return super(EducationSession, self).create(vals)

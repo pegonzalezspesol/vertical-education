@@ -89,3 +89,9 @@ class EducationTimetableLine(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code(
                 'education.timetable.line') or 'New'
         return super(EducationTimetableLine, self).create(vals)
+
+    @api.onchange('group_id')
+    def _onchange_group_id(self):
+        for record in self.group_id:
+            self.start_date = record.start_date
+            self.end_date = record.end_date
