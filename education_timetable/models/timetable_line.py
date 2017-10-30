@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
+"""This model allow to add a timetable for students and teachers"""
 # Copyright 2017 Pesol (<http://pesol.es>)
 #                Angel Moya <angel.moya@pesol.es>
 #                Luis Adan Jimenez Hernandez <luis.jimenez@pesol.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
-from odoo import models, api, fields, _
 from datetime import timedelta
+from odoo import models, api, fields, _
 
 
 class EducationTimetableLine(models.Model):
+    """This class is the principal for create timetable information"""
     _name = 'education.timetable.line'
 
     name = fields.Char(
@@ -24,7 +26,8 @@ class EducationTimetableLine(models.Model):
 
     subject_id = fields.Many2one(
         comodel_name='education.subject',
-        string='Subject')
+        string='Subject',
+    )
 
     teacher_id = fields.Many2one(
         comodel_name='education.teacher',
@@ -67,6 +70,8 @@ class EducationTimetableLine(models.Model):
 
     @api.multi
     def generate_new_sessions(self):
+        """This method generate lines for students and create timetables ranges.
+        """
         self.ensure_one()
         self.state = 'done'
         session_obj = self.env['education.session']
@@ -74,11 +79,11 @@ class EducationTimetableLine(models.Model):
         start = fields.Date.from_string(self.end_date)
         days = []
         for day in self.get_days(end, start):
-            if day.weekday() == int(self.days):
+            if day.weekday() == int(self.day):
                 days.append(day)
         for record in self:
             for day in days:
-                session_id = session_obj.create({
+                session_obj.create({
                     'timetable_id': record.id,
                     'date': day
                 })
