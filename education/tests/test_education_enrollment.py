@@ -2,14 +2,15 @@
 # Copyright 2017 Pesol (<http://pesol.es>)
 #                Angel Moya <angel.moya@pesol.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
-
+"""This model allow all the test in the enrollment object"""
 from odoo.tests.common import TransactionCase
-import odoo
 
 
 class TestEducationEnrollment(TransactionCase):
+    """This class is the definition of the tests"""
 
     def setUp(self):
+        """This is the main method"""
         super(TestEducationEnrollment, self).setUp()
 
         # Enrollment data
@@ -27,20 +28,25 @@ class TestEducationEnrollment(TransactionCase):
 
         # Get subject function
     def test_get_subjects(self):
+        """exec the function for get subjects in enrollments"""
         self.enrollment_id.get_subjects()
 
         # submitt enrollment
     def test_do_toggle_submitted(self):
+        """change the state of the enrollment and do other functionality"""
         self.enrollment_id.do_toggle_submitted()
 
         # approve enrollment
     def test_do_toggle_approve(self):
+        """complete the functionality of the enrollment"""
         self.enrollment_id.do_toggle_approve()
 
         # reset draft enrollment
     def test_action_reset_draft(self):
+        """restart the state of the enrollment"""
         self.enrollment_id.action_reset_draft()
 
         # cancell enrollment
     def test_cancelled_enrollment(self):
+        """cancell the enrollment setting the state cancelled"""
         self.enrollment_id.cancelled_enrollment()

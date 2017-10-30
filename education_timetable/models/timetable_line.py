@@ -11,6 +11,7 @@ from odoo import models, api, fields, _
 
 class EducationTimetableLine(models.Model):
     """This class is the principal for create timetable information"""
+
     _name = 'education.timetable.line'
 
     name = fields.Char(
