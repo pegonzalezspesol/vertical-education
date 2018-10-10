@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-10 08:56+0000\n"
-"PO-Revision-Date: 2018-10-10 08:56+0000\n"
+"POT-Creation-Date: 2018-10-10 15:16+0000\n"
+"PO-Revision-Date: 2018-10-10 15:16+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -24,6 +24,11 @@ msgstr "Calificaciones"
 #: model:ir.actions.act_window,help:education_evaluation.education_exam_action
 msgid "Click to create a new Education Exam."
 msgstr "Click para crear un nuevo Examen."
+
+#. module: education_evaluation
+#: model:ir.actions.act_window,help:education_evaluation.education_grading_scale_action
+msgid "Click to create a new Education Grading Scale."
+msgstr "Click para crear una nueva Escala de Calificaciones."
 
 #. module: education_evaluation
 #: model:ir.actions.act_window,help:education_evaluation.education_result_action
@@ -77,6 +82,11 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: education_evaluation
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_grading_scale_search
+msgid "Decimal Numbers"
+msgstr "Decimal Numbers"
+
+#. module: education_evaluation
 #: model:ir.model.fields,field_description:education_evaluation.field_education_grading_scale_decimals_number
 msgid "Decimals Number"
 msgstr "Número de decimales"
@@ -109,6 +119,15 @@ msgstr "Borrador"
 #: model:ir.ui.view,arch_db:education_evaluation.view_education_exam_tree
 msgid "Education Exam"
 msgstr "Exámenes"
+
+#. module: education_evaluation
+#: model:ir.actions.act_window,name:education_evaluation.education_grading_scale_action
+#: model:ir.ui.menu,name:education_evaluation.education_grading_scale_menu
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_grading_scale_form
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_grading_scale_search
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_grading_scale_tree
+msgid "Education Grading Scale"
+msgstr "Escala de Calificaciones"
 
 #. module: education_evaluation
 #: model:ir.actions.act_window,name:education_evaluation.education_result_action
@@ -167,6 +186,11 @@ msgid "Grade"
 msgstr "Grado"
 
 #. module: education_evaluation
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_grading_scale_form
+msgid "Grades"
+msgstr "Calificaciones"
+
+#. module: education_evaluation
 #: model:ir.model.fields,field_description:education_evaluation.field_education_course_grading_id
 #: model:ir.model.fields,field_description:education_evaluation.field_education_evaluable_grading_id
 #: model:ir.model.fields,field_description:education_evaluation.field_education_exam_grading_id
@@ -183,6 +207,7 @@ msgstr "Grupo"
 
 #. module: education_evaluation
 #: model:ir.ui.view,arch_db:education_evaluation.view_education_exam_search
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_grading_scale_search
 #: model:ir.ui.view,arch_db:education_evaluation.view_education_result_search
 msgid "Group By"
 msgstr "Agrupar por"
@@ -236,6 +261,7 @@ msgstr "Manual"
 #. module: education_evaluation
 #: model:ir.model.fields,field_description:education_evaluation.field_education_exam_name
 #: model:ir.ui.view,arch_db:education_evaluation.view_education_exam_search
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_grading_scale_search
 msgid "Name"
 msgstr "Nombre"
 
@@ -318,7 +344,7 @@ msgstr "Debe haber al menos un alumno matriculado en el grupo"
 #. module: education_evaluation
 #: model:ir.model.fields,field_description:education_evaluation.field_education_grade_end
 msgid "To"
-msgstr "Hacia"
+msgstr "Para"
 
 #. module: education_evaluation
 #: model:res.groups,name:education_evaluation.evaluation_user

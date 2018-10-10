@@ -36,7 +36,7 @@ class EducationEvaluable(models.AbstractModel):
         dec = str(self.score_manual).split(".")[1]
         if dec.__len__() > self.grading_id.decimals_number:
             raise ValidationError(
-             "Max "+str(self.exam_id.grading_id.decimals_number)+" decimals")
+                "Max " + str(self.exam_id.grading_id.decimals_number) + " decimals")
 
     @api.multi
     @api.depends('score_type', 'score_manual', 'score_computed')
@@ -92,6 +92,12 @@ class EducationResult(models.Model):
         comodel_name='education.grade',
         compute='_compute_grade')
 
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        string='Company',
+        default=lambda self: self.env.user.company_id,
+        readonly=True)
+
     @api.multi
     def _compute_grade(self):
         for result in self:
@@ -104,7 +110,7 @@ class EducationResult(models.Model):
         dec = str(self.score).split(".")[1]
         if dec.__len__() > self.exam_id.grading_id.decimals_number:
             raise ValidationError(
-             "Max "+str(self.exam_id.grading_id.decimals_number)+" decimals")
+                "Max " + str(self.exam_id.grading_id.decimals_number) + " decimals")
 
 
 class EducationRecordSubject(models.Model):
