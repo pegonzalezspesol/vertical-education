@@ -24,6 +24,7 @@
               <field name="date"/>
               <field name="grading_id"/>
             </group>
+            <field name="company_id" invisible="1"/>
             <group string="Results" attrs="{'invisible': [('state', '=', 'draft')]}">
               <field name="result_ids" nolabel="1">
                 <tree editable="bottom">
@@ -51,6 +52,7 @@
           <field name="date"/>
           <field name="grading_id"/>
           <field name="state"/>
+          <field name="company_id" invisible="1"/>
         </tree>
       </field>
     </record>

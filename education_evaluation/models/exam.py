@@ -1,7 +1,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import models, api, fields
+from odoo import models, api, fields, _
 from odoo.osv import expression
+from odoo.exceptions import ValidationError
 
 
 class EducationExam(models.Model):
@@ -46,6 +47,12 @@ class EducationExam(models.Model):
         string='Grading',
         required=True)
 
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        string='Company',
+        default=lambda self: self.env.user.company_id,
+        readonly=True)
+
     @api.onchange('group_id')
     def _change_group_id(self):
         if not self.group_id:
@@ -63,6 +70,9 @@ class EducationExam(models.Model):
 
     @api.multi
     def set_planned(self):
+        if not len(self.group_id.enrollment_ids) > 0:
+            raise ValidationError(
+                _('There must be at least one student enrolled in the group'))
         self.ensure_one()
         self.state = 'planned'
         values = []

@@ -17,6 +17,7 @@
         'mail'
     ],
     'data': [
+        'data/education_exam_multicompany.xml',
         'views/course_view.xml',
         'views/exam_view.xml',
         'views/result_view.xml',
