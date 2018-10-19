@@ -181,10 +181,14 @@ class EducationEnrollment(models.Model):
                             line_date) + relativedelta(days=(week_qty) * 7)
                     if not line.recurring_rule_type:
                         last_date = line_date
-
+                if self.course_id.pack:
+                    invoice_line_name = self.course_id.name
+                else:
+                    invoice_line_name = self.course_id.name + \
+                        '(' + self.group_id.name + ')'
                 invoice_line_data = {
                     'product_id': product_id.id,
-                    'name': self.course_id.name+'('+self.group_id.name+')',
+                    'name': invoice_line_name,
                     'account_id':
                     account_journal_id.default_debit_account_id.id,
                     'quantity': 1,
