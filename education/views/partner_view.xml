@@ -29,7 +29,7 @@
             </span>
           </div>
         </button>
-        <button type="object" class="oe_stat_button" icon="fa fa-file-text-o" name="open_student_enrollments" attrs="{'invisible': [('student', '=', False)]}">
+        <button type="object" class="oe_stat_button" icon="fa fa-file" name="open_student_enrollments" attrs="{'invisible': [('student', '=', False)]}">
           <div class="o_form_field o_stat_info">
             <span class="o_stat_value">
               <!-- <field name="invoices_count" modifiers="{'readonly': true}"/> -->
