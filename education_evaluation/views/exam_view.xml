@@ -9,6 +9,7 @@
           <header>
             <button string="Set Planned" class="oe_highlight" name="set_planned" type="object" context="{}" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
             <button string="Set Done" class="oe_highlight" name="set_done" type="object" context="{}" attrs="{'invisible': [('state', '!=', 'planned')]}"/>
+            <button string="Set Cancel" class="oe_highlight" name="set_cancel" type="object" context="{}" attrs="{'invisible': [('state', '!=', 'done')]}"/>
             <field name="state" widget="statusbar"/>
           </header>
           <sheet>

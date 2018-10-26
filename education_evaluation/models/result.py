@@ -134,6 +134,13 @@ class EducationRecordSubjectGroup(models.Model):
     _name = 'education.record.subject.group'
     _inherit = ['education.record.subject.group', 'education.evaluable']
 
+    score_type = fields.Selection(
+        [('manual', 'Manual'),
+         ('computed', 'Computed')],
+        default='computed',
+        string='Score type',
+        required=True)
+
     evaluation_result_ids = fields.One2many(
         comodel_name='education.result',
         inverse_name='record_subject_group_id',

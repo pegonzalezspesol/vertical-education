@@ -16,7 +16,8 @@ class EducationExam(models.Model):
     state = fields.Selection(
         [('draft', 'Draft'),
          ('planned', 'Planned'),
-         ('done', 'Done')],
+         ('done', 'Done'),
+         ('cancel', 'Cancel')],
         string='Status',
         default="draft")
 
@@ -88,3 +89,17 @@ class EducationExam(models.Model):
     @api.multi
     def set_done(self):
         self.state = 'done'
+
+    @api.multi
+    def set_cancel(self):
+        self.state = 'cancel'
+
+    @api.multi
+    def unlink(self):
+        for record in self:
+            if record.state not in ['done']:
+                record.result_ids.unlink()
+            else:
+                raise ValidationError(
+                    _('You only can delete draft and planned exams'))
+        return super(EducationExam, self).unlink()
