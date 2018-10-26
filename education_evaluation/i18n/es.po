@@ -21,6 +21,16 @@ msgid "Califications"
 msgstr "Calificaciones"
 
 #. module: education_evaluation
+#: selection:education.exam,state:0
+msgid "Cancel"
+msgstr "Cancelado"
+
+#. module: education_evaluation
+#: model:ir.ui.view,arch_db:education_evaluation.view_education_exam_form
+msgid "Set Cancel"
+msgstr "Cancelar"
+
+#. module: education_evaluation
 #: model:ir.actions.act_window,help:education_evaluation.education_exam_action
 msgid "Click to create a new Education Exam."
 msgstr "Click para crear un nuevo Examen."
@@ -333,13 +343,19 @@ msgstr "Asignatura"
 #. module: education_evaluation
 #: model:ir.model.fields,field_description:education_evaluation.field_education_result_record_subject_group_id
 msgid "Subject Record Group"
-msgstr "Subject Record Group"
+msgstr "Expediente asignatura por grupo"
 
 #. module: education_evaluation
 #: code:addons/education_evaluation/models/exam.py:75
 #, python-format
 msgid "There must be at least one student enrolled in the group"
 msgstr "Debe haber al menos un alumno matriculado en el grupo"
+
+#. module: education_evaluation
+#: code:addons/education_evaluation/models/exam.py:104
+#, python-format
+msgid "You only can delete draft and planned exams"
+msgstr "Solo puedes eliminar exámenes en borrador o planificados"
 
 #. module: education_evaluation
 #: model:ir.model.fields,field_description:education_evaluation.field_education_grade_end
