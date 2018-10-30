@@ -39,6 +39,12 @@ class EducationCertification(models.Model):
     reception_date = fields.Date(
         string='Reception Date')
 
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        default=lambda self: self.env.user.company_id.id,
+        string='Company',
+        readonly=True)
+
     @api.onchange('course_id')
     def _change_course_id(self):
         if not self.course_id:
