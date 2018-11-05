@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
 from odoo import models, api, fields
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class EducationSession(models.Model):
@@ -72,14 +72,14 @@ class EducationSession(models.Model):
     def _compute_time(self):
         for session in self:
             if session.timetable_id and session.date:
-                start_time = str(
-                    session.timetable_id.timerange_id.start_time).split('.')
-                end_time = str(
-                    session.timetable_id.timerange_id.end_time).split('.')
+                start_time = str(timedelta(
+                    hours=session.timetable_id.timerange_id.start_time)).split(':')
+                end_time = str(timedelta(
+                    hours=session.timetable_id.timerange_id.end_time)).split(':')
                 date = session.date.split('-')
                 session.start_time = datetime(int(date[0]), int(
                     date[1]), int(date[2]),
-                    int(start_time[0]) - 1, int(start_time[1]), 0)
+                    int(start_time[0]) - 2, int(start_time[1]), 0) 
                 session.end_time = datetime(int(date[0]), int(
-                    date[1]), int(date[2]), int(end_time[0]) - 1,
+                    date[1]), int(date[2]), int(end_time[0]) - 2,
                     int(end_time[1]), 0)

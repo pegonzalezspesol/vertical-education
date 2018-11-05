@@ -62,13 +62,13 @@
       <field name="model">education.exam</field>
       <field name="arch" type="xml">
         <search string="Education Exam">
-          <field name="name"/>
+          <!-- <field name="name"/> -->
           <field name="group_id"/>
           <field name="subject_id"/>
           <field name="date"/>
           <field name="state"/>
           <group string="Group By" name="groupby">
-            <filter string="Name" context="{'group_by': 'name'}"/>
+            <!-- <filter string="Name" context="{'group_by': 'name'}"/> -->
             <filter string="Group" context="{'group_by': 'group_id'}"/>
             <filter string="Subject" context="{'group_by': 'subject_id'}"/>
             <filter string="Date" context="{'group_by': 'date'}"/>

@@ -99,7 +99,7 @@ class EducationTimetableLine(models.Model):
     @api.multi
     def get_days(self, start, end):
         step = timedelta(days=1)
-        for i in range((end - start).days):
+        for i in range((end - start).days+1):
             yield start + i * step
 
     @api.multi
