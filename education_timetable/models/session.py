@@ -79,7 +79,7 @@ class EducationSession(models.Model):
                 date = session.date.split('-')
                 session.start_time = datetime(int(date[0]), int(
                     date[1]), int(date[2]),
-                    int(start_time[0]) - 2, int(start_time[1]), 0) 
+                    int(start_time[0]) - 1, int(start_time[1]), 0)
                 session.end_time = datetime(int(date[0]), int(
-                    date[1]), int(date[2]), int(end_time[0]) - 2,
+                    date[1]), int(date[2]), int(end_time[0]) - 1,
                     int(end_time[1]), 0)
