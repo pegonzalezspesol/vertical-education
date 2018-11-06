@@ -28,8 +28,8 @@
         'views/teacher_view.xml',
         'views/course_view.xml',
         'views/group_view.xml',
-        # 'views/education_vacation_view.xml',
         'data/day_data.xml',
+        'data/timetable_multicompany.xml',
         'wizard/session_presence_view.xml',
         'security/timetable_security.xml',
         'security/ir.model.access.csv'

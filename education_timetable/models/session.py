@@ -58,6 +58,11 @@ class EducationSession(models.Model):
     teacher_assist = fields.Boolean(
         string='Teacher Assist')
 
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        string='Company',
+        default=lambda self: self.env.user.company_id)
+
     @api.model
     def create(self, vals):
         if vals.get('code', 'New') == 'New':
