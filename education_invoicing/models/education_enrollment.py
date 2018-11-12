@@ -10,6 +10,8 @@ from odoo.exceptions import ValidationError
 from odoo.osv import expression
 import odoo.addons.decimal_precision as dp
 
+from lxml import etree
+
 
 class EducationEnrollment(models.Model):
     _inherit = 'education.enrollment'
@@ -210,12 +212,17 @@ class EducationEnrollment(models.Model):
                     'state': 'draft',
                 })
 
-    @api.onchange('group_id')
+    @api.onchange('group_id', 'course_id')
     def _onchange_group_id(self):
-        if not self.group_id:
-            return {'domain': {'invoicing_method_id': expression.FALSE_DOMAIN}}
-        invoicing_fields_domain = [
-            ('id', 'in', self.group_id.invoicing_method_ids.ids)]
+        if self.group_id:
+            invoicing_fields_domain = [
+                ('id', 'in', self.group_id.invoicing_method_ids.ids)]
+            return {'domain': {'invoicing_method_id': invoicing_fields_domain}}
+        elif self.course_id:
+            invoicing_fields_domain = [
+                ('id', 'in', self.course_id.invoicing_method_ids.ids)]
+        else:
+            invoicing_fields_domain = expression.FALSE_DOMAIN
         return {'domain': {'invoicing_method_id': invoicing_fields_domain}}
 
     @api.multi

@@ -38,7 +38,7 @@
         <page string="Invoicing">
           <group>
             <group string="Invoicing Method">
-              <field name="invoicing_method_id" widget="selection" attrs="{'readonly': ['|',('state', '!=', 'draft'),('course_id', '=', False)]}" domain="[('group_id', '=', group_id)]"/>
+              <field name="invoicing_method_id" widget="selection" attrs="{'readonly': ['|',('state', '!=', 'draft'),('course_id', '=', False)]}"/>
               <field name="invoicing_price" readonly="1"/>
               <!--field name="payment_mode_id" widget="selection"/-->
             </group>
