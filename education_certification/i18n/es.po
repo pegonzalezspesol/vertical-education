@@ -39,6 +39,20 @@ msgid "Course"
 msgstr "Curso"
 
 #. module: education_certification
+#: model:ir.model.fields,field_description:education_certification.field_education_certification_code
+msgid "Code"
+msgstr "Código"
+
+#. module: education_certification
+#: code:addons/education_certification/models/certification.py:20
+#: code:addons/education_certification/models/certification.py:57
+#: code:addons/education_certification/models/certification.py:61
+#: code:addons/education_certification/models/certification.py:64
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: education_certification
 #: model:ir.model.fields,field_description:education_certification.field_education_certification_create_uid
 msgid "Created by"
 msgstr "Creado por"
