@@ -8,12 +8,17 @@
         <form string="Education Certification">
           <sheet>
             <group>
-              <field name="name" required="1"/>
+              <group>
+                <field name="name" required="1"/>
+              </group>
+              <group>
+                <field name="code"/>
+              </group>
             </group>
             <group name="main" col="4">
               <field name="student_id"/>
               <field name="course_id"/>
-              <field name="record_id"/>
+              <field name="record_id" domain="[('student_id', '=', student_id)]"/>
               <field name="record_subject_id"/>
               <field name="subject_id"/>
               <field name="type"/>
@@ -77,6 +82,14 @@
           Click to create a new Education Certification.
         </p>
       </field>
+    </record>
+
+    <record id="certification_sequence_1" model="ir.sequence">
+      <field name="name">Certification Sequence</field>
+      <field name="code">education.certification</field>
+      <field name="prefix">DIP</field>
+      <field name="padding">4</field>
+      <field eval="1" name="company_id"/>
     </record>
 
     <menuitem id="education_certification_root" parent="education.education_base_menu" name="Certification" sequence="50"/>

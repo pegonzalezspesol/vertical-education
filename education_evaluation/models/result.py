@@ -11,7 +11,7 @@ class EducationEvaluable(models.AbstractModel):
     score_type = fields.Selection(
         [('manual', 'Manual'),
          ('computed', 'Computed')],
-        default='manual',
+        default='computed',
         string='Score type',
         required=True)
     score = fields.Float(

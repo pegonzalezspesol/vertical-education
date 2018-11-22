@@ -4,7 +4,7 @@
 #                Luis Adan Jimenez Hernandez <luis.jimenez@pesol.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
-from odoo import models, api, fields
+from odoo import models, api, fields, _
 from odoo.osv import expression
 
 
@@ -13,6 +13,13 @@ class EducationCertification(models.Model):
 
     name = fields.Char(
         string='Name')
+
+    code = fields.Char(
+        string='Code',
+        required=True,
+        default=lambda self: _('New'),
+        readonly=True)
+
     type = fields.Selection(
         [('subject', 'Subject'),
          ('course', 'Course')],
@@ -44,6 +51,18 @@ class EducationCertification(models.Model):
         default=lambda self: self.env.user.company_id.id,
         string='Company',
         readonly=True)
+
+    @api.model
+    def create(self, vals):
+        if vals.get('code', _('New')) == _('New'):
+            if 'company_id' in vals:
+                vals['code'] = self.env['ir.sequence'].with_context(
+                    force_company=vals['company_id']).next_by_code(
+                    'education.certification') or _('New')
+            else:
+                vals['code'] = self.env['ir.sequence'].next_by_code(
+                    'education.certification') or _('New')
+        return super(EducationCertification, self).create(vals)
 
     @api.onchange('course_id')
     def _change_course_id(self):
