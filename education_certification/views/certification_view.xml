@@ -87,7 +87,7 @@
     <record id="certification_sequence_1" model="ir.sequence">
       <field name="name">Certification Sequence</field>
       <field name="code">education.certification</field>
-      <field name="prefix">DIP</field>
+      <field name="prefix">CER</field>
       <field name="padding">4</field>
       <field eval="1" name="company_id"/>
     </record>
