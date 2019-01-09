@@ -54,14 +54,11 @@ class EducationCertification(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals.get('code', _('New')) == _('New'):
-            if 'company_id' in vals:
-                vals['code'] = self.env['ir.sequence'].with_context(
-                    force_company=vals['company_id']).next_by_code(
-                    'education.certification') or _('New')
-            else:
-                vals['code'] = self.env['ir.sequence'].next_by_code(
-                    'education.certification') or _('New')
+        if vals.get('code', 'New') == 'New':
+            vals.update({
+                'code': self.env['ir.sequence'].next_by_code(
+                    'education.certification') or 'New'
+            })
         return super(EducationCertification, self).create(vals)
 
     @api.onchange('course_id')

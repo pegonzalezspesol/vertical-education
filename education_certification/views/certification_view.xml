@@ -23,6 +23,7 @@
               <field name="subject_id"/>
               <field name="type"/>
               <field name="reception_date"/>
+              <field name="company_id" groups="base.group_system"/>
             </group>
           </sheet>
         </form>
@@ -42,6 +43,7 @@
           <field name="record_id"/>
           <field name="record_subject_id"/>
           <field name="type"/>
+          <field name="company_id" groups="base.group_system"/>
         </tree>
       </field>
     </record>
