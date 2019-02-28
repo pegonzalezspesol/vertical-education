@@ -446,6 +446,12 @@ msgid "invoicing Amount"
 msgstr "invoicing Amount"
 
 #. module: education_invoicing
+#: code:addons/education_invoicing/models/account_invoice.py:40
+#, python-format
+msgid "Refund"
+msgstr "Devolución"
+
+#. module: education_invoicing
 #: model:ir.model,name:education_invoicing.model_invoicing_method
 msgid "invoicing.method"
 msgstr "invoicing.method"

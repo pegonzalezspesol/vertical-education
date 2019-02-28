@@ -4,7 +4,7 @@
 #                Luis Adan Jimenez Hernandez <luis.jimenez@pesol.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from dateutil.relativedelta import relativedelta
 
 
@@ -37,7 +37,7 @@ class AccountInvoice(models.Model):
                     })
                     if lines.invoice_ids.type == 'out_refund':
                         lines.write({
-                            'name': 'Refund',
+                            'name': _('Refund'),
                             'subtotal': lines.subtotal * -1
                         })
 
