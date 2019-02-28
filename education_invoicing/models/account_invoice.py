@@ -35,6 +35,11 @@ class AccountInvoice(models.Model):
                     lines.write({
                         'state': 'paid'
                     })
+                    if lines.invoice_ids.type == 'out_refund':
+                        lines.write({
+                            'name': 'Refund',
+                            'subtotal': lines.subtotal * -1
+                        })
 
     @api.multi
     def action_invoice_open(self):
