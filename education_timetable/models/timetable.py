@@ -5,6 +5,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
 from odoo import models, api, fields, _
+from odoo.exceptions import ValidationError
 from datetime import timedelta
 from odoo.osv import expression
 
@@ -40,15 +41,6 @@ class EducationTimetableLine(models.Model):
         comodel_name='education.timerange',
         string='Time Range',
         required=True)
-
-    # day = fields.Selection(
-    #     [('0', 'Monday'),
-    #      ('1', 'Tuesday'),
-    #      ('2', 'Wednesday'),
-    #      ('3', 'Thursday'),
-    #      ('4', 'Friday')],
-    #     string='Days',
-    #     required=True)
 
     day_ids = fields.Many2many(
         comodel_name='education.day',
@@ -99,7 +91,7 @@ class EducationTimetableLine(models.Model):
     @api.multi
     def get_days(self, start, end):
         step = timedelta(days=1)
-        for i in range((end - start).days+1):
+        for i in range((end - start).days + 1):
             yield start + i * step
 
     @api.multi
@@ -121,7 +113,8 @@ class EducationTimetableLine(models.Model):
                 session_obj.create({
                     'timetable_id': record.id,
                     'timerange_id': record.timerange_id.id,
-                    'date': day
+                    'date': day,
+                    'teacher_id': record.teacher_id.id
                 })
 
     @api.model
@@ -130,6 +123,15 @@ class EducationTimetableLine(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code(
                 'education.timetable.line') or 'New'
         return super(EducationTimetableLine, self).create(vals)
+
+    @api.multi
+    def unlink(self):
+        for record in self:
+            if record.mapped('session_ids').filtered(
+                    lambda s: s.state in ['done']):
+                raise ValidationError(
+                    _('You can not remove timetable with done sessions'))
+        return super(EducationTimetableLine, self).unlink()
 
     @api.onchange('group_id')
     def _onchange_group_id(self):

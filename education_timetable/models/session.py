@@ -16,7 +16,8 @@ class EducationSession(models.Model):
         string='Code')
     timetable_id = fields.Many2one(
         comodel_name='education.timetable.line',
-        string='Timetable Lines')
+        string='Timetable Lines',
+        ondelete="cascade")
     date = fields.Date(
         string='Date')
     start_time = fields.Datetime(
@@ -42,7 +43,7 @@ class EducationSession(models.Model):
         default=lambda self: self.env.user)
     teacher_id = fields.Many2one(
         comodel_name='res.partner',
-        related='timetable_id.teacher_id',
+        # related='timetable_id.teacher_id',
         string='Teacher')
     subject_id = fields.Many2one(
         comodel_name='education.subject',
@@ -78,9 +79,11 @@ class EducationSession(models.Model):
         for session in self:
             if session.timetable_id and session.date:
                 start_time = str(timedelta(
-                    hours=session.timetable_id.timerange_id.start_time)).split(':')
+                    hours=session.timetable_id.timerange_id.start_time)).\
+                    split(':')
                 end_time = str(timedelta(
-                    hours=session.timetable_id.timerange_id.end_time)).split(':')
+                    hours=session.timetable_id.timerange_id.end_time)).\
+                    split(':')
                 date = session.date.split('-')
                 session.start_time = datetime(int(date[0]), int(
                     date[1]), int(date[2]),
