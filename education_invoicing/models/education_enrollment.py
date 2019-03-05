@@ -262,9 +262,10 @@ class EducationEnrollmentInvoicingMethodLine(models.Model):
     _name = 'education.enrollment.invoicing.line'
     _order = "sequence"
 
-    name = name = fields.Selection(
+    name = fields.Selection(
         [('enrollment', 'Enrollment'),
-         ('fee', 'Fee')],
+         ('fee', 'Fee'),
+         ('refund', 'Refund')],
         string='Type')
     state = fields.Selection(
         [('invoiced', 'Invoiced'),

@@ -37,7 +37,7 @@ class AccountInvoice(models.Model):
                     })
                     if lines.invoice_ids.type == 'out_refund':
                         lines.write({
-                            'name': _('Refund'),
+                            'name': 'refund',
                             'subtotal': lines.subtotal * -1
                         })
 
