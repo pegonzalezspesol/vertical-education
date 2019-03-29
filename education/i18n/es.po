@@ -78,11 +78,22 @@ msgid "Subject Records"
 msgstr "Expediente de Asignaturas"
 
 #. module: education
+#: model:ir.model.fields,field_description:education.field_education_record_subject_group_record_subject_id
 #: model:ir.ui.view,arch_db:education.view_record_subject_form
 #: model:ir.ui.view,arch_db:education.view_record_subject_search
 #: model:ir.ui.view,arch_db:education.view_record_subject_tree
 msgid "Subject Record"
 msgstr "Expediente de asignatura"
+
+#. module: education
+#: model:ir.model.fields,field_description:education.field_education_record_subject_record_subject_group_ids
+msgid "Subjects by Group"
+msgstr "Asignaturas por grupo"
+
+#. module: education
+#: model:ir.model.fields,field_description:education.field_education_record_record_subject_ids
+msgid "Subjects Records"
+msgstr "Expedientes de Asignaturas"
 
 #. module: education
 #: model:ir.ui.view,arch_db:education.view_record_subject_search
@@ -93,11 +104,6 @@ msgstr "Curso"
 #: model:ir.ui.view,arch_db:education.view_record_subject_search
 msgid "Student"
 msgstr "Alumno"
-
-#. module: education
-#: model:ir.ui.view,arch_db:education.view_record_subject_search
-msgid "Subject"
-msgstr "Asignatura"
 
 #. module: education
 #: model:ir.model.fields,field_description:education.field_education_course_category_parent_id
@@ -411,16 +417,40 @@ msgid "Country"
 msgstr "País"
 
 #. module: education
+#: model:ir.model.fields,field_description:education.field_education_course_subject_course_id
 #: model:ir.model.fields,field_description:education.field_education_enrollment_course_id
 #: model:ir.model.fields,field_description:education.field_education_group_course_id
 #: model:ir.model.fields,field_description:education.field_education_record_course_id
-#: model:ir.model.fields,field_description:education.field_education_subject_course_id
 #: model:ir.model.fields,field_description:education.field_education_record_subject_course_id
+#: model:ir.model.fields,field_description:education.field_education_record_subject_group_course_id
 #: model:ir.ui.view,arch_db:education.view_education_enrollment_search
 #: model:ir.ui.view,arch_db:education.view_education_group_search
 #: model:ir.ui.view,arch_db:education.view_education_record_search
+#: model:ir.ui.view,arch_db:education.view_record_subject_search
 msgid "Course"
 msgstr "Curso"
+
+#. module: education
+#: model:ir.model.fields,field_description:education.field_education_record_subject_group_enrollment_id
+msgid "Enrollment"
+msgstr "Matrícula"
+
+#. module: education
+#: model:ir.model.fields,field_description:education.field_education_enrollment_group_id
+#: model:ir.model.fields,field_description:education.field_education_record_subject_group_group_id
+#: model:ir.ui.view,arch_db:education.view_education_enrollment_search
+msgid "Group"
+msgstr "Grupo"
+
+#. module: education
+#: model:ir.ui.view,arch_db:education.view_record_subject_form
+msgid "Last Group"
+msgstr "Último grupo"
+
+#. module: education
+#: model:ir.model.fields,field_description:education.field_education_record_subject_last_record_subject_group_id
+msgid "Last Group Record"
+msgstr "Expediente último grupo"
 
 #. module: education
 #: model:ir.actions.act_window,name:education.education_course_action
@@ -965,7 +995,10 @@ msgid "Enrollments"
 msgstr "Matrículas"
 
 #. module: education
+#: model:ir.model.fields,field_description:education.field_education_course_subject_subject_id
+#: model:ir.model.fields,field_description:education.field_education_record_subject_group_subject_id
 #: model:ir.model.fields,field_description:education.field_education_record_subject_subject_id
+#: model:ir.ui.view,arch_db:education.view_record_subject_search
 msgid "Subject"
 msgstr "Asignatura"
 
@@ -1198,10 +1231,14 @@ msgstr "Calle2"
 #. module: education
 #: model:ir.model.fields,field_description:education.field_education_enrollment_student_id
 #: model:ir.model.fields,field_description:education.field_education_record_student_id
+#: model:ir.model.fields,field_description:education.field_education_record_subject_group_student_id
 #: model:ir.model.fields,field_description:education.field_education_record_subject_student_id
+#: model:ir.model.fields,field_description:education.field_res_partner_student
+#: model:ir.model.fields,field_description:education.field_res_users_student
 #: model:ir.ui.view,arch_db:education.view_education_enrollment_search
 #: model:ir.ui.view,arch_db:education.view_education_record_search
-#: model:ir.ui.view,arch_db:education.view_education_student_form
+#: model:ir.ui.view,arch_db:education.view_record_subject_search
+#: model:ir.ui.view,arch_db:education.view_res_partner_education_filter
 msgid "Student"
 msgstr "Alumno"
 
@@ -1508,6 +1545,13 @@ msgstr "Matrículas"
 #: model:ir.ui.view,arch_db:education.view_education_group_search
 msgid "groups"
 msgstr "Grupos Académicos"
+
+#. module: education
+#: model:ir.actions.act_window,name:education.education_group_action
+#: model:ir.ui.menu,name:education.education_group
+#: model:ir.ui.view,arch_db:education.view_record_subject_form
+msgid "Groups"
+msgstr "Grupos"
 
 #. module: education
 #: model:ir.model.fields,field_description:education.field_education_enrollment_group_id

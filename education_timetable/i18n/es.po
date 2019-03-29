@@ -451,12 +451,12 @@ msgstr "Asignar faltas asistencia"
 #: model:ir.model.fields,field_description:education_timetable.field_education_vacation_subject_id
 #: model:ir.ui.view,arch_db:education_timetable.view_education_timetable_search
 msgid "Subject"
-msgstr "Asunto"
+msgstr "Asignatura"
 
 #. module: education_timetable
 #: model:ir.model.fields,field_description:education_timetable.field_education_session_ausence_record_subject_group_id
 msgid "Subject Record"
-msgstr "Subject Record"
+msgstr "Expediente Asignatura"
 
 #. module: education_timetable
 #: model:ir.model.fields,field_description:education_timetable.field_education_session_ausence_supporting_document
