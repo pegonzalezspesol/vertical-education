@@ -5,6 +5,9 @@
 
 from odoo import models, api, fields
 from datetime import datetime, timedelta
+import pytz
+
+tz = pytz.timezone('Europe/Madrid')
 
 
 class EducationSession(models.Model):
@@ -64,6 +67,10 @@ class EducationSession(models.Model):
         string='Company',
         default=lambda self: self.env.user.company_id)
 
+    @api.multi
+    def get_hours(self, hours):
+        return '{0:02.0f}:{1:02.0f}:00'.format(*divmod(float(hours) * 60, 60))
+
     @api.model
     def create(self, vals):
         if vals.get('code', 'New') == 'New':
@@ -76,18 +83,17 @@ class EducationSession(models.Model):
                  'timetable_id.timerange_id.end_time',
                  )
     def _compute_time(self):
-        for session in self:
-            if session.timetable_id and session.date:
-                start_time = str(timedelta(
-                    hours=session.timetable_id.timerange_id.start_time)).\
-                    split(':')
-                end_time = str(timedelta(
-                    hours=session.timetable_id.timerange_id.end_time)).\
-                    split(':')
-                date = session.date.split('-')
-                session.start_time = datetime(int(date[0]), int(
-                    date[1]), int(date[2]),
-                    int(start_time[0]) - 1, int(start_time[1]), 0)
-                session.end_time = datetime(int(date[0]), int(
-                    date[1]), int(date[2]), int(end_time[0]) - 1,
-                    int(end_time[1]), 0)
+        utc = pytz.timezone('UTC')
+        for session in self.filtered(lambda s: s.timetable_id and s.date):
+            start_time = session.timetable_id.timerange_id.start_time
+            start_time = session.get_hours(start_time)
+            end_time = session.timetable_id.timerange_id.end_time
+            end_time = session.get_hours(end_time)
+            date_start = session.date + ' ' + start_time
+            date_end = session.date + ' ' + end_time
+            start_date = tz.normalize(tz.localize(
+                fields.Datetime.from_string(date_start))).astimezone(utc)
+            end_date = tz.normalize(tz.localize(
+                fields.Datetime.from_string(date_end))).astimezone(utc)
+            session.start_time = start_date
+            session.end_time = end_date
