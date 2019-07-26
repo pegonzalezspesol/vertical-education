@@ -15,6 +15,7 @@ class EducationInvoicingMethod(models.Model):
         compute='_compute_name')
     course_id = fields.Many2one(
         comodel_name='education.course',
+        company_dependent=True,
         string='Course')
     group_id = fields.Many2one(
         comodel_name='education.group',
