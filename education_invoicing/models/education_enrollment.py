@@ -244,7 +244,6 @@ class EducationEnrollment(models.Model):
     @api.multi
     def action_cancel(self):
         super(EducationEnrollment, self).action_cancel()
-        self.invoicing_line_ids = False
 
     @api.multi
     def unlink(self):
@@ -324,14 +323,13 @@ class EducationEnrollmentInvoicingMethodLine(models.Model):
 
     @api.multi
     def unlink(self):
-        if self.invoice_ids and self.invoiced:
-            raise ValidationError(
-                _("Once the invoice has been paid, the line can not be deleted"
-                  )
-            )
-        else:
-            for line in self.invoice_ids:
-                invoice = self.env['account.invoice'].browse(line.id)
-                invoice.unlink()
-            # self.invoice_id.unlink()
-            return super(EducationEnrollmentInvoicingMethodLine, self).unlink()
+        for record in self:
+            if record.invoice_ids and record.invoiced:
+                raise ValidationError(
+                    _("Once the invoice has been paid, the line can not be deleted"
+                      )
+                )
+            else:
+                for invoice in record.invoice_ids:
+                    invoice.unlink()
+        return super(EducationEnrollmentInvoicingMethodLine, self).unlink()
