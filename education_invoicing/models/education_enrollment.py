@@ -324,7 +324,8 @@ class EducationEnrollmentInvoicingMethodLine(models.Model):
     @api.multi
     def unlink(self):
         for record in self:
-            if record.invoice_ids and record.invoiced:
+            if record.invoice_ids.mapped(
+                    'state') in ['paid'] and record.invoiced:
                 raise ValidationError(
                     _("Once the invoice has been paid, the line can not be deleted"
                       )
