@@ -23,23 +23,25 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def action_invoice_paid(self):
-        super(AccountInvoice, self).action_invoice_paid()
-        if self.state == 'paid':
-            for lines in self.enrollment_id.\
-                    invoicing_line_ids:
-                # date = lines.date or self.date_invoice
-                # Mejor cambiar por fecha de factura
-                if lines.quantity == 1 and lines.invoiced \
-                        and lines.state == 'invoiced' \
-                        and lines.subtotal == self.amount_total:
-                    lines.write({
-                        'state': 'paid'
-                    })
-                    if lines.invoice_ids.type == 'out_refund':
+        res = super(AccountInvoice, self).action_invoice_paid()
+        for record in self:
+            if record.state == 'paid':
+                for lines in record.enrollment_id.\
+                        invoicing_line_ids:
+                    # date = lines.date or self.date_invoice
+                    # Mejor cambiar por fecha de factura
+                    if lines.quantity == 1 and lines.invoiced \
+                            and lines.state == 'invoiced' \
+                            and lines.subtotal == record.amount_total:
                         lines.write({
-                            'name': 'refund',
-                            'subtotal': lines.subtotal * -1
+                            'state': 'paid'
                         })
+                        if lines.invoice_ids.type == 'out_refund':
+                            lines.write({
+                                'name': 'refund',
+                                'subtotal': lines.subtotal * -1
+                            })
+        return res
 
     @api.multi
     def action_invoice_open(self):
