@@ -11,15 +11,18 @@ class Lead(models.Model):
 
     group_id = fields.Many2one(
         comodel_name='education.group',
-        string='Group')
+        string='Group',
+        track_visibility='onchange')
 
     course_id = fields.Many2one(
         comodel_name='education.course',
-        string='Course')
+        string='Course',
+        track_visibility='onchange')
 
     enrollment_id = fields.Many2one(
         comodel_name='education.enrollment',
-        string='Enrollment')
+        string='Enrollment',
+        track_visibility='onchange')
 
     def create_enrollment(self):
         return {
