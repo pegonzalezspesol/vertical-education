@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
         <record id="view_op_category_tree" model="ir.ui.view">
@@ -37,8 +37,16 @@
                     <field name="code" />
                     <newline />
                     <group expand="0" string="Group By...">
-                        <filter string="Name" domain="[]" context="{'group_by':'name'}" />
-                        <filter string="Code" domain="[]" context="{'group_by':'code'}" />
+                        <filter
+                            string="Name"
+                            domain="[]"
+                            context="{'group_by':'name'}"
+                        />
+                        <filter
+                            string="Code"
+                            domain="[]"
+                            context="{'group_by':'code'}"
+                        />
                     </group>
                 </search>
             </field>

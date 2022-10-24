@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data noupdate="1">
         <record id="op_faculty_1" model="op.faculty">
@@ -17,8 +17,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_21" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_1.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_1.jpg"
+            />
         </record>
 
         <record id="op_faculty_2" model="op.faculty">
@@ -37,8 +40,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_22" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_2.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_2.jpg"
+            />
         </record>
 
         <record id="op_faculty_3" model="op.faculty">
@@ -57,8 +63,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_23" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_3.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_3.jpg"
+            />
         </record>
 
         <record id="op_faculty_4" model="op.faculty">
@@ -77,8 +86,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_24" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_4.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_4.jpg"
+            />
         </record>
 
         <record id="op_faculty_5" model="op.faculty">
@@ -97,8 +109,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_25" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_5.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_5.jpg"
+            />
         </record>
 
         <record id="op_faculty_6" model="op.faculty">
@@ -117,8 +132,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_26" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_6.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_6.jpg"
+            />
         </record>
 
         <record id="op_faculty_7" model="op.faculty">
@@ -137,8 +155,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_27" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_7.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_7.jpg"
+            />
         </record>
 
         <record id="op_faculty_8" model="op.faculty">
@@ -157,8 +178,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_28" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_8.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_8.jpg"
+            />
         </record>
 
         <record id="op_faculty_9" model="op.faculty">
@@ -177,8 +201,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_29" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_9.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_9.jpg"
+            />
         </record>
 
         <record id="op_faculty_10" model="op.faculty">
@@ -197,8 +224,11 @@
             <field name="customer">True</field>
             <field name="active">True</field>
             <field name="partner_id" ref="op_res_partner_30" />
-            <field name="photo" type="base64"
-                file="openeducat_core/static/img/faculty_10.jpg" />
+            <field
+                name="photo"
+                type="base64"
+                file="openeducat_core/static/img/faculty_10.jpg"
+            />
         </record>
 
     </data>

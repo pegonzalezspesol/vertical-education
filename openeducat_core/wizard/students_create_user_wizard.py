@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
 #
 #    Tech-Receptives Solutions Pvt. Ltd.
@@ -19,24 +18,25 @@
 #
 ###############################################################################
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class WizardOpStudent(models.TransientModel):
-    _name = 'wizard.op.student'
+    _name = "wizard.op.student"
     _description = "Create User for selected Student(s)"
 
     def _get_students(self):
-        if self.env.context and self.env.context.get('active_ids'):
-            return self.env.context.get('active_ids')
+        if self.env.context and self.env.context.get("active_ids"):
+            return self.env.context.get("active_ids")
         return []
 
     student_ids = fields.Many2many(
-        'op.student', default=_get_students, string='Students')
+        "op.student", default=_get_students, string="Students"
+    )
 
     @api.multi
     def create_student_user(self):
-        user_group = self.env.ref('openeducat_core.group_op_student')
-        active_ids = self.env.context.get('active_ids', []) or []
-        records = self.env['op.student'].browse(active_ids)
-        self.env['res.users'].create_user(records, user_group)
+        user_group = self.env.ref("openeducat_core.group_op_student")
+        active_ids = self.env.context.get("active_ids", []) or []
+        records = self.env["op.student"].browse(active_ids)
+        self.env["res.users"].create_user(records, user_group)

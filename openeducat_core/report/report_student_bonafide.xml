@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
         <template id="report_student_bonafide">
@@ -6,7 +6,7 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-call="report.external_layout">
                         <div class="page">
-                            <br></br>
+                            <br />
                             <div class="row" style="padding-left:10px">
                                 Phone: &#09;
                                 <span t-esc="res_company.phone" />
@@ -22,20 +22,27 @@
                                     <strong>Bonafide Certificate</strong>
                                 </h4>
                             </div>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
                             <table>
                                 <tbody>
                                     <tr>
                                         <td>
                                             This is to certify that
-                                            <span t-raw="'%s' % o.title.name if o.title.name else ''" />
+                                            <span
+                                                t-raw="'%s' % o.title.name if o.title.name else ''"
+                                            />
                                             <strong>
                                                 <u>
-                                                    <span t-raw="'%s' % o.name if o.name else ''" />
                                                     <span
-                                                        t-raw="'%s' % o.middle_name if o.middle_name else ''" />
-                                                    <span t-raw="'%s' % o.last_name if o.last_name else ''" />
+                                                        t-raw="'%s' % o.name if o.name else ''"
+                                                    />
+                                                    <span
+                                                        t-raw="'%s' % o.middle_name if o.middle_name else ''"
+                                                    />
+                                                    <span
+                                                        t-raw="'%s' % o.last_name if o.last_name else ''"
+                                                    />
                                                 </u>
                                             </strong>
                                             <font color="white">.</font>
@@ -45,7 +52,8 @@
                                             <strong>
                                                 <u>
                                                     <span
-                                                        t-raw="'%s' % o.course_detail_ids[0].course_id.name if o.course_detail_ids else ''" />
+                                                        t-raw="'%s' % o.course_detail_ids[0].course_id.name if o.course_detail_ids else ''"
+                                                    />
                                                 </u>
                                             </strong>
                                             Year
@@ -53,7 +61,8 @@
                                                 (
                                                 <u>
                                                     <span
-                                                        t-raw="'%s' % o.course_detail_ids[0].batch_id.name if o.course_detail_ids else ''" />
+                                                        t-raw="'%s' % o.course_detail_ids[0].batch_id.name if o.course_detail_ids else ''"
+                                                    />
                                                 </u>
                                                 ).
                                             </strong>
@@ -73,10 +82,10 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                             <table width="100%">
                                 <tbody>
                                     <tr>

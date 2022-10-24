@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
 #
 #    Tech-Receptives Solutions Pvt. Ltd.
@@ -19,19 +18,22 @@
 #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import fields, models
 
 
 class OpCourse(models.Model):
-    _name = 'op.course'
+    _name = "op.course"
 
-    name = fields.Char('Name', size=32, required=True)
-    code = fields.Char('Code', size=8, required=True)
-    parent_id = fields.Many2one('op.course', 'Parent Course')
-    section = fields.Char('Section', size=32, required=True)
+    name = fields.Char("Name", size=32, required=True)
+    code = fields.Char("Code", size=8, required=True)
+    parent_id = fields.Many2one("op.course", "Parent Course")
+    section = fields.Char("Section", size=32, required=True)
     evaluation_type = fields.Selection(
-        [('normal', 'Normal'), ('GPA', 'GPA'), ('CWA', 'CWA'), ('CCE', 'CCE')],
-        'Evaluation Type', default="normal", required=True)
-    subject_ids = fields.Many2many('op.subject', string='Subject(s)')
+        [("normal", "Normal"), ("GPA", "GPA"), ("CWA", "CWA"), ("CCE", "CCE")],
+        "Evaluation Type",
+        default="normal",
+        required=True,
+    )
+    subject_ids = fields.Many2many("op.subject", string="Subject(s)")
     max_unit_load = fields.Float("Maximum Unit Load")
     min_unit_load = fields.Float("Minimum Unit Load")

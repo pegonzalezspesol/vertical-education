@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
         <record id="view_op_subject_tree" model="ir.ui.view">
@@ -44,8 +44,11 @@
                     <field name="type" />
                     <newline />
                     <group expand="0" string="Group By...">
-                        <filter string="Type" domain="[]"
-                            context="{'group_by':'type'}" />
+                        <filter
+                            string="Type"
+                            domain="[]"
+                            context="{'group_by':'type'}"
+                        />
                     </group>
                 </search>
             </field>

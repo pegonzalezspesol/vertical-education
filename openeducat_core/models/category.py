@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
 #
 #    Tech-Receptives Solutions Pvt. Ltd.
@@ -19,11 +18,11 @@
 #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import fields, models
 
 
 class OpCategory(models.Model):
-    _name = 'op.category'
+    _name = "op.category"
 
-    name = fields.Char('Name', size=256, required=True)
-    code = fields.Char('Code', size=4, required=True)
+    name = fields.Char("Name", size=256, required=True)
+    code = fields.Char("Code", size=4, required=True)

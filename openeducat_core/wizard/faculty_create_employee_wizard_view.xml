@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <odoo>
     <data>
         <record id="op_faculty_create_employee_view" model="ir.ui.view">
@@ -10,7 +10,12 @@
                         <field name="user_boolean" />
                     </group>
                     <footer groups="base.group_user">
-                        <button name="create_employee" type="object" string="Create Employee" class="oe_highlight" />
+                        <button
+                            name="create_employee"
+                            type="object"
+                            string="Create Employee"
+                            class="oe_highlight"
+                        />
                         <button string="Cancel" special="cancel" />
                     </footer>
                 </form>
