@@ -18,36 +18,47 @@
 #
 ###############################################################################
 
-from openerp import _, api, fields, models
-
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
 class OpSubjectRegistration(models.Model):
     _name = "op.subject.registration"
+    _description = "Subject Registration"
     _inherit = ["mail.thread"]
 
-    name = fields.Char("Name", readonly=True, default="New")
+    name = fields.Char(readonly=True, default="New")
     student_id = fields.Many2one(
-        "op.student", "Student", required=True, track_visibility="onchange"
+        comodel_name="op.student",
+        string="Student",
+        required=True,
+        tracking=True,
     )
     course_id = fields.Many2one(
-        "op.course", "Course", required=True, track_visibility="onchange"
+        comodel_name="op.course",
+        string="Course",
+        required=True,
+        tracking=True,
     )
     batch_id = fields.Many2one(
-        "op.batch", "Batch", required=True, track_visibility="onchange"
+        comodel_name="op.batch",
+        string="Batch",
+        required=True,
+        tracking=True,
     )
     compulsory_subject_ids = fields.Many2many(
-        "op.subject",
-        "subject_compulsory_rel",
-        "register_id",
-        "subject_id",
+        comodel_name="op.subject",
+        relation="subject_compulsory_rel",
+        column1="register_id",
+        column2="subject_id",
         string="Compulsory Subjects",
         readonly=True,
     )
-    elective_subject_ids = fields.Many2many("op.subject", string="Elective Subjects")
+    elective_subject_ids = fields.Many2many(
+        comodel_name="op.subject", string="Elective Subjects"
+    )
     state = fields.Selection(
-        [
+        selection=[
             ("draft", "Draft"),
             ("submitted", "Submitted"),
             ("approved", "Approved"),
@@ -56,20 +67,19 @@ class OpSubjectRegistration(models.Model):
         default="draft",
         string="state",
         copy=False,
-        track_visibility="onchange",
+        tracking=True,
     )
-    max_unit_load = fields.Float("Maximum Unit Load", track_visibility="onchange")
-    min_unit_load = fields.Float("Minimum Unit Load", track_visibility="onchange")
+    max_unit_load = fields.Float(string="Maximum Unit Load", tracking=True)
+    min_unit_load = fields.Float(string="Minimum Unit Load", tracking=True)
 
-    @api.multi
     def action_reset_draft(self):
-        self.state = "draft"
+        for rec in self:
+            rec.state = "draft"
 
-    @api.multi
     def action_reject(self):
-        self.state = "rejected"
+        for rec in self:
+            rec.state = "rejected"
 
-    @api.multi
     def action_approve(self):
         for record in self:
             subject_ids = []
@@ -90,19 +100,20 @@ class OpSubjectRegistration(models.Model):
             else:
                 raise ValidationError(_("Course not found on student's admission!"))
 
-    @api.multi
     def action_submitted(self):
-        self.state = "submitted"
+        for rec in self:
+            rec.state = "submitted"
 
-    @api.model
-    def create(self, vals):
-        if vals.get("name", "New") == "New":
-            vals["name"] = (
-                self.env["ir.sequence"].next_by_code("op.subject.registration") or "/"
-            )
-        return super(OpSubjectRegistration, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("name", "New") == "New":
+                vals["name"] = (
+                    self.env["ir.sequence"].next_by_code("op.subject.registration")
+                    or "/"
+                )
+        return super(OpSubjectRegistration, self).create(vals_list)
 
-    @api.multi
     def get_subjects(self):
         for record in self:
             subject_ids = []

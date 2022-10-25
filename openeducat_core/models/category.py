@@ -23,6 +23,7 @@ from odoo import fields, models
 
 class OpCategory(models.Model):
     _name = "op.category"
+    _description = "Category"
 
-    name = fields.Char("Name", size=256, required=True)
-    code = fields.Char("Code", size=4, required=True)
+    name = fields.Char(size=256, required=True)
+    code = fields.Char(size=4, required=True)

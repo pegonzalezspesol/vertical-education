@@ -24,14 +24,14 @@ from odoo.exceptions import ValidationError
 
 class OpBatch(models.Model):
     _name = "op.batch"
+    _description = "Batch"
 
-    code = fields.Char("Code", size=8, required=True)
-    name = fields.Char("Name", size=32, required=True)
-    start_date = fields.Date("Start Date", required=True, default=fields.Date.today())
-    end_date = fields.Date("End Date", required=True)
-    course_id = fields.Many2one("op.course", "Course", required=True)
+    code = fields.Char(size=8, required=True)
+    name = fields.Char(size=32, required=True)
+    start_date = fields.Date(required=True, default=fields.Date.today())
+    end_date = fields.Date(required=True)
+    course_id = fields.Many2one(comodel_name="op.course", required=True)
 
-    @api.multi
     @api.constrains("start_date", "end_date")
     def check_dates(self):
         for record in self:

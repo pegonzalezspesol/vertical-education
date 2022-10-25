@@ -18,16 +18,15 @@
 #
 ###############################################################################
 
-from openerp import api, fields, models
+from odoo import fields, models
 
 
 class WizardOpFacultyEmployee(models.TransientModel):
     _name = "wizard.op.faculty.employee"
     _description = "Create Employee and User of Faculty"
 
-    user_boolean = fields.Boolean("Want to create user too ?", default=True)
+    user_boolean = fields.Boolean(string="Want to create user too ?", default=True)
 
-    @api.multi
     def create_employee(self):
         for record in self:
             active_id = self.env.context.get("active_ids", []) or []

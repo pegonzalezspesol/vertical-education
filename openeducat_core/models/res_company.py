@@ -18,23 +18,22 @@
 #
 ###############################################################################
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    signature = fields.Binary("Signature")
-    accreditation = fields.Text("Accreditation")
-    approval_authority = fields.Text("Approval Authority")
+    signature = fields.Binary()
+    accreditation = fields.Text()
+    approval_authority = fields.Text()
 
 
 class ResUsers(models.Model):
     _inherit = "res.users"
 
-    user_line = fields.One2many("op.student", "user_id", "User Line")
+    user_line = fields.One2many(comodel_name="op.student", inverse_name="user_id")
 
-    @api.multi
     def create_user(self, records, user_group=None):
         for rec in records:
             if not rec.user_id:
@@ -43,7 +42,7 @@ class ResUsers(models.Model):
                     "login": rec.email or (rec.name + rec.last_name),
                     "partner_id": rec.partner_id.id,
                 }
-                user_id = self.create(user_vals)
+                user_id = self.create([user_vals])
                 rec.user_id = user_id
                 if user_group:
                     user_group.users = user_group.users + user_id

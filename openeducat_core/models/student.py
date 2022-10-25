@@ -26,11 +26,15 @@ class OpStudentCourse(models.Model):
     _name = "op.student.course"
     _description = "Student Course Details"
 
-    student_id = fields.Many2one("op.student", "Student", ondelete="cascade")
-    course_id = fields.Many2one("op.course", "Course", required=True)
-    batch_id = fields.Many2one("op.batch", "Batch", required=True)
-    roll_number = fields.Char("Roll Number")
-    subject_ids = fields.Many2many("op.subject", string="Subjects")
+    student_id = fields.Many2one(
+        comodel_name="op.student", string="Student", ondelete="cascade"
+    )
+    course_id = fields.Many2one(
+        comodel_name="op.course", string="Course", required=True
+    )
+    batch_id = fields.Many2one(comodel_name="op.batch", string="Batch", required=True)
+    roll_number = fields.Char()
+    subject_ids = fields.Many2many(comodel_name="op.subject", string="Subjects")
 
     _sql_constraints = [
         (
@@ -53,13 +57,14 @@ class OpStudentCourse(models.Model):
 
 class OpStudent(models.Model):
     _name = "op.student"
+    _description = "Student"
     _inherits = {"res.partner": "partner_id"}
 
-    middle_name = fields.Char("Middle Name", size=128)
-    last_name = fields.Char("Last Name", size=128, required=True)
-    birth_date = fields.Date("Birth Date", required=True)
+    middle_name = fields.Char(size=128)
+    last_name = fields.Char(size=128, required=True)
+    birth_date = fields.Date(required=True)
     blood_group = fields.Selection(
-        [
+        selection=[
             ("A+", "A+ve"),
             ("B+", "B+ve"),
             ("O+", "O+ve"),
@@ -69,26 +74,26 @@ class OpStudent(models.Model):
             ("O-", "O-ve"),
             ("AB-", "AB-ve"),
         ],
-        "Blood Group",
     )
     gender = fields.Selection(
-        [("m", "Male"), ("f", "Female"), ("o", "Other")], "Gender", required=True
+        selection=[("m", "Male"), ("f", "Female"), ("o", "Other")], required=True
     )
-    nationality = fields.Many2one("res.country", "Nationality")
-    emergency_contact = fields.Many2one("res.partner", "Emergency Contact")
-    visa_info = fields.Char("Visa Info", size=64)
-    id_number = fields.Char("ID Card Number", size=64)
-    photo = fields.Binary("Photo")
+    nationality = fields.Many2one(comodel_name="res.country")
+    emergency_contact = fields.Many2one(comodel_name="res.partner")
+    visa_info = fields.Char(size=64)
+    id_number = fields.Char(string="ID Card Number", size=64)
+    photo = fields.Binary()
     partner_id = fields.Many2one(
-        "res.partner", "Partner", required=True, ondelete="cascade"
+        comodel_name="res.partner", string="Partner", required=True, ondelete="cascade"
     )
     gr_no = fields.Char("GR Number", size=20)
-    category_id = fields.Many2one("op.category", "Category")
+    category_id = fields.Many2one(comodel_name="op.category", string="Category")
     course_detail_ids = fields.One2many(
-        "op.student.course", "student_id", "Course Details"
+        comodel_name="op.student.course",
+        inverse_name="student_id",
+        string="Course Details",
     )
 
-    @api.multi
     @api.constrains("birth_date")
     def _check_birthdate(self):
         for record in self:

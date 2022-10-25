@@ -20,15 +20,15 @@
 
 {
     "name": "OpenEduCat Core",
-    "version": "10.0.3.0.0",
+    "version": "16.0.1.0.0",
     "license": "LGPL-3",
     "category": "Education",
     "sequence": 1,
     "summary": "Manage Students, Faculties and Education Institute",
     "complexity": "easy",
-    "author": "Tech Receptives",
+    "author": "Tech Receptives, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/vertical-education",
-    "depends": ["board", "document", "hr", "web", "website"],
+    "depends": ["board", "attachment_indexation", "hr", "web", "website"],
     "data": [
         "report/report_menu.xml",
         "report/report_student_bonafide.xml",
@@ -78,7 +78,7 @@
     "images": [
         "static/description/openeducat_core_banner.jpg",
     ],
-    "installable": False,
+    "installable": True,
     "auto_install": False,
     "application": True,
 }

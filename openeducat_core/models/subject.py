@@ -23,25 +23,24 @@ from odoo import fields, models
 
 class OpSubject(models.Model):
     _name = "op.subject"
+    _description = "Subject"
 
-    name = fields.Char("Name", size=128, required=True)
-    code = fields.Char("Code", size=256, required=True)
-    course_id = fields.Many2one("op.course", "Course")
-    grade_weightage = fields.Float("Grade Weightage")
+    name = fields.Char(size=128, required=True)
+    code = fields.Char(size=256, required=True)
+    course_id = fields.Many2one(comodel_name="op.course", string="Course")
+    grade_weightage = fields.Float()
     type = fields.Selection(
-        [
+        selection=[
             ("theory", "Theory"),
             ("practical", "Practical"),
             ("both", "Both"),
             ("other", "Other"),
         ],
-        "Type",
         default="theory",
         required=True,
     )
     subject_type = fields.Selection(
-        [("compulsory", "Compulsory"), ("elective", "Elective")],
-        "Subject Type",
+        selection=[("compulsory", "Compulsory"), ("elective", "Elective")],
         default="compulsory",
         required=True,
     )

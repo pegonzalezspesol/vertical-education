@@ -23,17 +23,22 @@ from odoo import fields, models
 
 class OpCourse(models.Model):
     _name = "op.course"
+    _description = "Course"
 
-    name = fields.Char("Name", size=32, required=True)
-    code = fields.Char("Code", size=8, required=True)
-    parent_id = fields.Many2one("op.course", "Parent Course")
-    section = fields.Char("Section", size=32, required=True)
+    name = fields.Char(size=32, required=True)
+    code = fields.Char(size=8, required=True)
+    parent_id = fields.Many2one(comodel_name="op.course", string="Parent Course")
+    section = fields.Char(size=32, required=True)
     evaluation_type = fields.Selection(
-        [("normal", "Normal"), ("GPA", "GPA"), ("CWA", "CWA"), ("CCE", "CCE")],
-        "Evaluation Type",
+        selection=[
+            ("normal", "Normal"),
+            ("GPA", "GPA"),
+            ("CWA", "CWA"),
+            ("CCE", "CCE"),
+        ],
         default="normal",
         required=True,
     )
-    subject_ids = fields.Many2many("op.subject", string="Subject(s)")
-    max_unit_load = fields.Float("Maximum Unit Load")
-    min_unit_load = fields.Float("Minimum Unit Load")
+    subject_ids = fields.Many2many(comodel_name="op.subject", string="Subject(s)")
+    max_unit_load = fields.Float(string="Maximum Unit Load")
+    min_unit_load = fields.Float(string="Minimum Unit Load")

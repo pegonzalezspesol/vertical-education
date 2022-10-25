@@ -18,7 +18,7 @@
 #
 ###############################################################################
 
-from openerp import api, fields, models
+from odoo import fields, models
 
 
 class WizardOpStudent(models.TransientModel):
@@ -31,10 +31,9 @@ class WizardOpStudent(models.TransientModel):
         return []
 
     student_ids = fields.Many2many(
-        "op.student", default=_get_students, string="Students"
+        comodel_name="op.student", default=_get_students, string="Students"
     )
 
-    @api.multi
     def create_student_user(self):
         user_group = self.env.ref("openeducat_core.group_op_student")
         active_ids = self.env.context.get("active_ids", []) or []
